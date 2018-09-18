@@ -115,19 +115,14 @@ public class Character {
     }
       public void update() {
         move(dx, dy);
-        grow ();
-    }
-       /**
-     * Makes the character "bounce" and reverse direction on X axis 
-     */
+       ////////grow ();
+    }   
+      //Makes the character "bounce" and reverse direction on X axis 
     public void reverseX() {
         dx += -2;
         //TODO Implement this method
     }
-    
-    /**
-     * Makes the character "bounce" and reverse direction on Y axis 
-     */
+      //Makes the character "bounce" and reverse direction on Y axis 
     public void reverseY() {
         dy += -2;
         //TODO Implement this method
@@ -135,7 +130,7 @@ public class Character {
     //private methods  
     private void grow ()  {
        //size =  (int) (Math.random()*10)- 4;
-       size *= 1.05;
+  //     size *= 1.05;
     }
 
 }

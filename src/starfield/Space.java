@@ -58,21 +58,23 @@ public class Space extends JPanel {
             
             hero.update();
             enemy.update();
+            wallCollisions(hero);
+             wallCollisions(enemy);
             repaint();
         }
       }
       public void keyPressed(KeyEvent e) {
           if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-              hero.setDX(2);
+              hero.setDX(4);
           }
           else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-              hero.setDX(-2);
+              hero.setDX(-4);
           }
            else if (e.getKeyCode() == KeyEvent.VK_UP) {
-              hero.setDY(-2);
+              hero.setDY(-4);
           }
            else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-              hero.setDY(2);
+              hero.setDY(4);
           }
            
            else if (e.getKeyCode() == KeyEvent.VK_D) {
@@ -129,16 +131,18 @@ public class Space extends JPanel {
         
         System.out.println(rand1+" "+rand2);   
         }
-        //if (x > 1100 || y> 860) {
-           //break;
-        //}
         }
-
-      /**
-     * Makes the hero and enemy bounce off walls
-     */    
-    private void wallCollissions() {
-        //TODO Implement this method
+     //Makes the hero and enemy bounce off walls  
+    private void wallCollisions(Character c) {
+        //walls = this.getWidth(), 0 , this.getHeight(), 0 
+        
+        if (c.getX()<= 0 || c.getX() >= this.getWidth() ) {
+            c.reverseX();
+        }
+         if (c.getY() <= 0 || c.getY() >= this.getHeight()) {
+            c.reverseY();
+        }
+        //hero's location = hero.getX(), hero.getY()
     }
    } 
     
