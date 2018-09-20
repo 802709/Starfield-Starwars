@@ -105,8 +105,9 @@ public class Character {
         g.fillRect(x, y, size, size);
     }
     
-    public void kill() {
-        grow();
+    public void kill(Character c) {
+       c.setSize(0);
+       c.draw(null);
     }
     
     public void move (int dx, int dy) {
@@ -119,14 +120,15 @@ public class Character {
     }   
       //Makes the character "bounce" and reverse direction on X axis 
     public void reverseX() {
-        dx += -2;
-        //TODO Implement this method
+      dx = -dx;
+      move(3 * dx,dy);
     }
+    
       //Makes the character "bounce" and reverse direction on Y axis 
     public void reverseY() {
-        dy += -2;
-        //TODO Implement this method
-    } 
+    dy = -dy;
+      move(3 * dx,dy);
+    }
     //private methods  
     private void grow ()  {
        //size =  (int) (Math.random()*10)- 4;

@@ -55,39 +55,40 @@ public class Space extends JPanel {
       private class ScheduleTask extends TimerTask {	    	   
         @Override
         public void run() {
-            
+            wallCollisions(hero);
+            wallCollisions(enemy);
+            heroVsEnemy (hero, enemy);
             hero.update();
             enemy.update();
-            wallCollisions(hero);
-             wallCollisions(enemy);
-            repaint();
+            repaint();  
+        
         }
       }
       public void keyPressed(KeyEvent e) {
           if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-              hero.setDX(4);
+              hero.setDX(3);
           }
           else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-              hero.setDX(-4);
+              hero.setDX(-3);
           }
            else if (e.getKeyCode() == KeyEvent.VK_UP) {
-              hero.setDY(-4);
+              hero.setDY(-3);
           }
            else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-              hero.setDY(4);
+              hero.setDY(3);
           }
            
            else if (e.getKeyCode() == KeyEvent.VK_D) {
-              hero.setDX(2);
+              hero.setDX(3);
           }
            else if (e.getKeyCode() == KeyEvent.VK_A) {
-              hero.setDX(-2);
+              hero.setDX(-3);
           }
             else if (e.getKeyCode() == KeyEvent.VK_W) {
-              hero.setDX(-2);
+              hero.setDX(-3);
           }
             else if (e.getKeyCode() == KeyEvent.VK_S) {
-              hero.setDY(2);
+              hero.setDY(3);
           } 
       }   
         public void keyReleased(KeyEvent e) {
@@ -132,6 +133,21 @@ public class Space extends JPanel {
         System.out.println(rand1+" "+rand2);   
         }
         }
+   
+    private void heroVsEnemy (Hero h, Enemy e) {
+       if (h.getX() == e.getX() ||  h.getY() == e.getY() ) {
+           if (h.getSize() >= e.getSize()){
+             h.kill(e);   
+           } 
+       
+       if (h.getY() == e.getX() || h.getX() == e.getY()) {
+           if (h.getSize() >= e.getSize()){
+            h.kill(e); 
+           }
+           
+       } 
+       }
+   }
      //Makes the hero and enemy bounce off walls  
     private void wallCollisions(Character c) {
         //walls = this.getWidth(), 0 , this.getHeight(), 0 
@@ -144,6 +160,6 @@ public class Space extends JPanel {
         }
         //hero's location = hero.getX(), hero.getY()
     }
-   } 
+} 
     
 
